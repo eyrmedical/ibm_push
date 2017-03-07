@@ -5,9 +5,22 @@ defmodule IBMPush.Mixfile do
     [app: :ibm_push,
      version: "0.1.0",
      elixir: "~> 1.4",
+     description: "Wrapper to use IBM Bluemix Push notification REST API.",
+     docs: [extras: ["README.md"]],
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     package: package(),
      deps: deps()]
+  end
+
+  def package do
+    [ 
+      name: :ibm_push,
+      files: ["lib", "mix.exs"],
+      maintainers: ["Vyacheslav Voronchuk"],
+      licenses: ["MIT"],
+      links: %{"Github" => "https://github.com/eyrmedical/ibm_push"},
+    ]
   end
 
   # Configuration for the OTP application
@@ -35,7 +48,9 @@ defmodule IBMPush.Mixfile do
       {:hackney, "1.6.1"},
       {:httpoison, "~> 0.9.2"},
       {:poison, "~> 3.0"},
-      {:uuid, "~> 1.1"}
+      {:uuid, "~> 1.1"},
+      {:earmark, ">= 0.0.0", only: :dev},
+      {:ex_doc, ">= 0.0.0", only: :dev},
     ]
   end
 end
